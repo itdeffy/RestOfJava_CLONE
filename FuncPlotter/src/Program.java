@@ -13,12 +13,17 @@ public class Program {
         canvas = new Canvas();
         canvas.setRange(-360, -240, 360, 240);
         canvas.open();
-
+        
+        Function sinY = (x) -> {return (int) (200 * Math.sin(Math.PI * x / 360));};
+        Function quadY = (x) -> {return (int) ((x-200)*(x+200)/250);};
+        Function logY = (x) -> {return (int) (20 * Math.log(x));};
+        Function cubicY = (x) -> {return (int) (x*x*x/200000);};
         // Draw a short red diagonal on the canvas
         canvas.pause();
-        canvas.setColor(Color.red);
-        for (int i = 0; i < 100; i++) {
-            canvas.plot(i, i);
+        canvas.setColor(Color.blue);
+        int domain = 400;
+        for (int i = -domain; i < domain; i++) {
+            canvas.plot(i, logY.calcY(i));
         }
 
         // Pause and close the canvas then terminate the program.
