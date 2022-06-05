@@ -3,12 +3,13 @@ import java.awt.Insets;
 
 public class Program {
 
+    // Main Frame, with a title bar and custom title.
+    private static Frame myFrame = new Frame("Java AWT Demo");
+    
     public static void main(String[] args) {
         System.out.println("Hello to Java Abstract Window Toolkit (AWT)!");
         
-        // Create a frame (window) with a title bar.
-        // The frame is 600 x 400 pixels, centered on the screen.
-        Frame myFrame = new Frame("Java AWT Demo");
+        // Configure the frame to 600 x 400 pixels, centered on the screen.
         myFrame.setSize(600, 400);
         myFrame.setLocationRelativeTo(null);
 
