@@ -5,6 +5,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.Frame;
+import java.awt.TextArea;
 import java.awt.TextField;
 
 /**
@@ -14,52 +15,65 @@ import java.awt.TextField;
  */
 public class MyListener implements WindowListener, ActionListener, KeyListener {
 
+    private TextArea _console;
+    
+    private void printText(String text) {
+        String crtText = _console.getText();
+        String newText = crtText + "\n" + text;
+        _console.setText(newText);
+        _console.setCaretPosition(newText.length());
+    }
+    
+    public MyListener(TextArea console) {
+        _console = console;
+    }
+    
     @Override
     public void windowOpened(WindowEvent e) {
-        System.out.println("Opened");
+        printText("Opened");
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
-        System.out.println("Closing");
+        printText("Closing");
         ((Frame)e.getSource()).dispose();
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-        System.out.println("Closed");
+        printText("Closed");
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
-        System.out.println("Iconified");
+        printText("Iconified");
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-        System.out.println("Deiconified");
+        printText("Deiconified");
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-        System.out.println("Activated");
+        printText("Activated");
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-        System.out.println("Deactivated");
+        printText("Deactivated");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
+        printText(e.getActionCommand());
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyChar() == '\n' && e.getSource() instanceof TextField) {
             TextField textField = (TextField)e.getSource();
-            System.out.println(textField.getText());
+            printText(textField.getText());
         }
     }
 
