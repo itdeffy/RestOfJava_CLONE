@@ -1,3 +1,5 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.Frame;
@@ -7,7 +9,7 @@ import java.awt.Frame;
  * needed for reacting to user actions. An instance of this
  * object is registered with each of the UI components.
  */
-public class MyListener implements WindowListener {
+public class MyListener implements WindowListener, ActionListener {
 
     @Override
     public void windowOpened(WindowEvent e) {
@@ -43,6 +45,11 @@ public class MyListener implements WindowListener {
     @Override
     public void windowDeactivated(WindowEvent e) {
         System.out.println("Deactivated");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getActionCommand());
     }
 
 }

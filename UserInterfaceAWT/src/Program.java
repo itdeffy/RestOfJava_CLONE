@@ -36,7 +36,7 @@ public class Program {
         System.out.printf("    from top-left: (%d, %d)\n", xMin, yMin);
         System.out.printf("    to bottom-right: (%d, %d)\n", xMax, yMax);
         
-        addButtons(myFrame);
+        addButtons(myFrame, myListener);
         
         System.out.println("Goodbye");
     }
@@ -44,11 +44,12 @@ public class Program {
     /**
      * Add two buttons to the frame
      */
-    public static void addButtons(Frame myFrame) {
+    public static void addButtons(Frame myFrame, MyListener myListener) {
         Insets insets = myFrame.getInsets();
         
         Button myButton1 = new Button("Dare!");
         myButton1.setBounds(insets.left + 10, insets.top + 10, 80, 40);
+        myButton1.addActionListener(myListener);
         myFrame.add(myButton1);
         
         Button myButton2 = new Button("Don't do it!");
@@ -56,6 +57,7 @@ public class Program {
                 myButton1.getX() + myButton1.getWidth() + 10,
                 myButton1.getY(),
                 80, 40);
+        myButton2.addActionListener(myListener);
         myFrame.add(myButton2);
     }
 
