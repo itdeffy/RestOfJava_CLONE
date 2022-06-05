@@ -8,6 +8,9 @@ public class Program {
     private static MyListener myListener = new MyListener();
     // Main Frame, with a title bar and custom title.
     private static Frame myFrame = new Frame("Java AWT Demo");
+    // Two Buttons in the first row in the Frame
+    private static Button myButton1 = new Button("Dare!");
+    private static Button myButton2 = new Button("Don't do it!");
     
     public static void main(String[] args) {
         System.out.println("Hello to Java Abstract Window Toolkit (AWT)!");
@@ -47,12 +50,12 @@ public class Program {
     public static void addButtons() {
         Insets insets = myFrame.getInsets();
         
-        Button myButton1 = new Button("Dare!");
+        // Configure first button
         myButton1.setBounds(insets.left + 10, insets.top + 10, 80, 40);
         myButton1.addActionListener(myListener);
         myFrame.add(myButton1);
         
-        Button myButton2 = new Button("Don't do it!");
+        // configure second button
         myButton2.setBounds(
                 myButton1.getX() + myButton1.getWidth() + 10,
                 myButton1.getY(),
