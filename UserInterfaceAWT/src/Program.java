@@ -15,7 +15,7 @@ public class Program {
         // Make the frame visible
         myFrame.setVisible(true);
         
-        // Once the window is visible, get its insets
+        // Once the frame is visible, get its insets
         Insets insets = myFrame.getInsets();
         System.out.println("Insets: ");
         System.out.printf("    top=%d, left=%d, bottom=%d, right=%d\n",
