@@ -4,15 +4,15 @@ import java.awt.Insets;
 
 public class Program {
 
+    // Create a main listener object
+    private static MyListener myListener = new MyListener();
+    // Main Frame, with a title bar and custom title.
+    private static Frame myFrame = new Frame("Java AWT Demo");
+    
     public static void main(String[] args) {
         System.out.println("Hello to Java Abstract Window Toolkit (AWT)!");
         
-        // Create a main listener object
-        MyListener myListener = new MyListener();
-        
-        // Create a frame (window) with a title bar.
-        // The frame is 600 x 400 pixels, centered on the screen.
-        Frame myFrame = new Frame("Java AWT Demo");
+        // Configure the frame to 600 x 400 pixels, centered on the screen.
         myFrame.setSize(600, 400);
         myFrame.setLocationRelativeTo(null);
         myFrame.addWindowListener(myListener);
@@ -36,27 +36,7 @@ public class Program {
         System.out.printf("    from top-left: (%d, %d)\n", xMin, yMin);
         System.out.printf("    to bottom-right: (%d, %d)\n", xMax, yMax);
         
-        addButtons(myFrame);
-        
         System.out.println("Goodbye");
     }
     
-    /**
-     * Add two buttons to the frame
-     */
-    public static void addButtons(Frame myFrame) {
-        Insets insets = myFrame.getInsets();
-        
-        Button myButton1 = new Button("Dare!");
-        myButton1.setBounds(insets.left + 10, insets.top + 10, 80, 40);
-        myFrame.add(myButton1);
-        
-        Button myButton2 = new Button("Don't do it!");
-        myButton2.setBounds(
-                myButton1.getX() + myButton1.getWidth() + 10,
-                myButton1.getY(),
-                80, 40);
-        myFrame.add(myButton2);
-    }
-
 }
