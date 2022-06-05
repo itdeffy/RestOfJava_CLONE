@@ -6,11 +6,15 @@ public class Program {
     public static void main(String[] args) {
         System.out.println("Hello to Java Abstract Window Toolkit (AWT)!");
         
+        // Create a main listener object
+        MyListener myListener = new MyListener();
+        
         // Create a frame (window) with a title bar.
         // The frame is 600 x 400 pixels, centered on the screen.
         Frame myFrame = new Frame("Java AWT Demo");
         myFrame.setSize(600, 400);
         myFrame.setLocationRelativeTo(null);
+        myFrame.addWindowListener(myListener);
 
         // Make the frame visible
         myFrame.setVisible(true);
