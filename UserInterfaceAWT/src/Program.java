@@ -1,3 +1,4 @@
+import java.awt.Button;
 import java.awt.Frame;
 import java.awt.Insets;
 
@@ -35,7 +36,27 @@ public class Program {
         System.out.printf("    from top-left: (%d, %d)\n", xMin, yMin);
         System.out.printf("    to bottom-right: (%d, %d)\n", xMax, yMax);
         
+        addButtons(myFrame);
+        
         System.out.println("Goodbye");
+    }
+    
+    /**
+     * Add two buttons to the frame
+     */
+    public static void addButtons(Frame myFrame) {
+        Insets insets = myFrame.getInsets();
+        
+        Button myButton1 = new Button("Dare!");
+        myButton1.setBounds(insets.left + 10, insets.top + 10, 80, 40);
+        myFrame.add(myButton1);
+        
+        Button myButton2 = new Button("Don't do it!");
+        myButton2.setBounds(
+                myButton1.getX() + myButton1.getWidth() + 10,
+                myButton1.getY(),
+                80, 40);
+        myFrame.add(myButton2);
     }
 
 }
