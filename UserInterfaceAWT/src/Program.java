@@ -2,6 +2,7 @@ import java.awt.Button;
 import java.awt.Frame;
 import java.awt.Insets;
 import java.awt.Label;
+import java.awt.TextArea;
 import java.awt.TextField;
 
 public class Program {
@@ -16,6 +17,8 @@ public class Program {
     // Label and TextField in the second row in the Frame
     private static Label myLabel = new Label("Just say it:");
     private static TextField myTextField = new TextField();
+    // TextArea filling the rest of the Frame
+    private static TextArea myTextArea = new TextArea();
     
     public static void main(String[] args) {
         System.out.println("Hello to Java Abstract Window Toolkit (AWT)!");
@@ -47,6 +50,8 @@ public class Program {
         addButtons();
         
         addTextField();
+        
+        addTextArea();
         
         System.out.println("Goodbye");
     }
@@ -86,6 +91,20 @@ public class Program {
                 myFrame.getWidth() - myButton2.getX() - myFrame.getInsets().right - 10, 20);
         myTextField.addKeyListener(myListener);
         myFrame.add(myTextField);
+    }
+    
+    /**
+     * Add a read-only text area to the form
+     */
+    private static void addTextArea() {
+        int xAnchor = myLabel.getX();
+        int yAnchor = myLabel.getY() + myLabel.getHeight() + 10;
+        myTextArea.setBounds(
+                xAnchor, yAnchor, 
+                myFrame.getWidth() - xAnchor - myFrame.getInsets().right - 10,
+                myFrame.getHeight() - yAnchor - myFrame.getInsets().bottom - 10);
+        myTextArea.setEditable(false);
+        myFrame.add(myTextArea);
     }
 
 }
