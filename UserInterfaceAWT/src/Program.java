@@ -1,6 +1,8 @@
 import java.awt.Button;
 import java.awt.Frame;
 import java.awt.Insets;
+import java.awt.Label;
+import java.awt.TextField;
 
 public class Program {
 
@@ -11,6 +13,9 @@ public class Program {
     // Two Buttons in the first row in the Frame
     private static Button myButton1 = new Button("Dare!");
     private static Button myButton2 = new Button("Don't do it!");
+    // Label and TextField in the second row in the Frame
+    private static Label myLabel = new Label("Just say it:");
+    private static TextField myTextField = new TextField();
     
     public static void main(String[] args) {
         System.out.println("Hello to Java Abstract Window Toolkit (AWT)!");
@@ -41,6 +46,8 @@ public class Program {
         
         addButtons();
         
+        addTextField();
+        
         System.out.println("Goodbye");
     }
     
@@ -62,6 +69,23 @@ public class Program {
                 80, 40);
         myButton2.addActionListener(myListener);
         myFrame.add(myButton2);
+    }
+    
+    /**
+     * Add a label and a text field to the frame
+     */
+    private static void addTextField() {
+        myLabel.setBounds(
+                myButton1.getX(),
+                myButton1.getY() + myButton1.getHeight() + 10,
+                80, 20);
+        myFrame.add(myLabel);
+        myTextField.setBounds(
+                myButton2.getX(),
+                myButton2.getY() + myButton2.getHeight() + 10,
+                myFrame.getWidth() - myButton2.getX() - myFrame.getInsets().right - 10, 20);
+        myTextField.addKeyListener(myListener);
+        myFrame.add(myTextField);
     }
 
 }

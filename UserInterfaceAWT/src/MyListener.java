@@ -1,15 +1,18 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.Frame;
+import java.awt.TextField;
 
 /**
  * Main Listener class, implementing all listener interfaces
  * needed for reacting to user actions. An instance of this
  * object is registered with each of the UI components.
  */
-public class MyListener implements WindowListener, ActionListener {
+public class MyListener implements WindowListener, ActionListener, KeyListener {
 
     @Override
     public void windowOpened(WindowEvent e) {
@@ -50,6 +53,26 @@ public class MyListener implements WindowListener, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println(e.getActionCommand());
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        if (e.getKeyChar() == '\n' && e.getSource() instanceof TextField) {
+            TextField textField = (TextField)e.getSource();
+            System.out.println(textField.getText());
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 
 }
