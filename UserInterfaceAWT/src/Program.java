@@ -1,5 +1,8 @@
 import java.awt.Button;
+import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Frame;
+import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.Label;
 import java.awt.TextArea;
@@ -15,8 +18,10 @@ public class Program {
     // Label and TextField in the second row in the Frame
     private static Label myLabel = new Label("Just say it:");
     private static TextField myTextField = new TextField();
-    // TextArea filling the rest of the Frame
+    // TextArea in the third row in Frame
     private static TextArea myTextArea = new TextArea();
+    // Canvas filling up the rest of the Frame
+    private static MyCanvas myCanvas = new MyCanvas();
     
     // Create a main listener object
     private static MyListener myListener = new MyListener(myTextArea);
@@ -55,6 +60,8 @@ public class Program {
         addTextField();
         
         addTextArea();
+        
+        addCanvas();
         
         System.out.println("Goodbye");
     }
@@ -105,9 +112,20 @@ public class Program {
         myTextArea.setBounds(
                 xAnchor, yAnchor, 
                 myFrame.getWidth() - xAnchor - myFrame.getInsets().right - 10,
-                myFrame.getHeight() - yAnchor - myFrame.getInsets().bottom - 10);
+                120);
         myTextArea.setEditable(false);
         myFrame.add(myTextArea);
+    }
+    
+    private static void addCanvas() {
+        int xAnchor = myTextArea.getX();
+        int yAnchor = myTextArea.getY() + myTextArea.getHeight() + 10;
+        myCanvas.setBounds(
+                xAnchor, yAnchor,
+                myFrame.getWidth() - xAnchor - myFrame.getInsets().right - 10,
+                myFrame.getHeight() - yAnchor - myFrame.getInsets().bottom - 10);
+        myCanvas.setBackground(new Color(240,240,240));
+        myFrame.add(myCanvas);
     }
 
 }
